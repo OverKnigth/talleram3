@@ -12,7 +12,8 @@ class _Screen3State extends State<Screen3> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +28,12 @@ class _Screen3State extends State<Screen3> {
       ),
       body: Stack(
         children: [
-          // Fondo
           Positioned.fill(
             child: Image.network(
               "https://img.freepik.com/fotos-premium/fondo-liso-plano-varios-colores_599236-109.jpg",
               fit: BoxFit.cover,
             ),
           ),
-          // Contenido
           Center(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -57,9 +56,12 @@ class _Screen3State extends State<Screen3> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
-                      child: Text("Disfruta de lo mejor de HBO MAX en cada momento, llena los datos y unete a nuestra gran familia.", style: TextStyle(color: Colors.white, fontSize: 15), textAlign: TextAlign.center,),
+                      child: Text(
+                        "Disfruta de lo mejor de HBO MAX en cada momento, llena los datos y unete a nuestra gran familia.",
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
-                    // Campo para el correo
                     TextFormField(
                       controller: _emailController,
                       decoration: InputDecoration(
@@ -70,7 +72,8 @@ class _Screen3State extends State<Screen3> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
-                        prefixIcon: const Icon(Icons.email, color: Colors.blueAccent),
+                        prefixIcon:
+                            const Icon(Icons.email, color: Colors.blueAccent),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -80,7 +83,6 @@ class _Screen3State extends State<Screen3> {
                       },
                     ),
                     const SizedBox(height: 20),
-                    // Campo para la contraseña
                     TextFormField(
                       controller: _passwordController,
                       obscureText: true,
@@ -92,7 +94,8 @@ class _Screen3State extends State<Screen3> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
-                        prefixIcon: const Icon(Icons.lock, color: Colors.blueAccent),
+                        prefixIcon:
+                            const Icon(Icons.lock, color: Colors.blueAccent),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -102,7 +105,6 @@ class _Screen3State extends State<Screen3> {
                       },
                     ),
                     const SizedBox(height: 20),
-                    // Campo para confirmar la contraseña
                     TextFormField(
                       controller: _confirmPasswordController,
                       obscureText: true,
@@ -114,7 +116,8 @@ class _Screen3State extends State<Screen3> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
-                        prefixIcon: const Icon(Icons.lock_outline, color: Colors.blueAccent),
+                        prefixIcon: const Icon(Icons.lock_outline,
+                            color: Colors.blueAccent),
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -127,7 +130,6 @@ class _Screen3State extends State<Screen3> {
                       },
                     ),
                     const SizedBox(height: 30),
-                    // Botón de registro
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
@@ -138,7 +140,8 @@ class _Screen3State extends State<Screen3> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 15),
                         backgroundColor: Colors.blueAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -150,7 +153,6 @@ class _Screen3State extends State<Screen3> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    // Botón de regreso al inicio de sesión
                     TextButton(
                       onPressed: () => inicio(context),
                       child: const Text(

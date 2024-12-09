@@ -31,7 +31,6 @@ class _CuerpoState extends State<Cuerpo> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    // Inicializa la animación con un retraso para la imagen
     Future.delayed(const Duration(milliseconds: 500), () {
       setState(() {
         _isVisible = true;
@@ -44,19 +43,16 @@ class _CuerpoState extends State<Cuerpo> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: Stack(
         children: [
-          // Fondo
           Positioned.fill(
             child: Image.network(
               "https://img.freepik.com/fotos-premium/fondo-liso-plano-varios-colores_599236-109.jpg",
               fit: BoxFit.cover,
             ),
           ),
-          // Contenido centrado
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Título principal
                 const Text(
                   "HBO MAX",
                   style: TextStyle(
@@ -67,7 +63,6 @@ class _CuerpoState extends State<Cuerpo> with SingleTickerProviderStateMixin {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
-                // Mensaje principal
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
@@ -81,7 +76,6 @@ class _CuerpoState extends State<Cuerpo> with SingleTickerProviderStateMixin {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // Subtítulo
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
@@ -95,14 +89,12 @@ class _CuerpoState extends State<Cuerpo> with SingleTickerProviderStateMixin {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Imagen animada
                 AnimatedOpacity(
                   opacity: _isVisible ? 1.0 : 0.0,
                   duration: const Duration(seconds: 2),
                   child: imgL(),
                 ),
                 const SizedBox(height: 20),
-                // Botones
                 login_btn(context),
                 const SizedBox(height: 10),
                 register_btn(context),
@@ -115,7 +107,6 @@ class _CuerpoState extends State<Cuerpo> with SingleTickerProviderStateMixin {
   }
 }
 
-// Botón para iniciar sesión
 Widget login_btn(BuildContext context) {
   return ElevatedButton.icon(
     style: ElevatedButton.styleFrom(
@@ -132,7 +123,6 @@ Widget login_btn(BuildContext context) {
   );
 }
 
-// Botón para registrarse
 Widget register_btn(BuildContext context) {
   return ElevatedButton.icon(
     style: ElevatedButton.styleFrom(
@@ -150,14 +140,15 @@ Widget register_btn(BuildContext context) {
 }
 
 void navegar2(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) => const Screen2()));
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) => const Screen2()));
 }
 
 void navegar3(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) => const Screen3()));
+  Navigator.push(
+      context, MaterialPageRoute(builder: (context) => const Screen3()));
 }
 
-// Imagen con animación
 Widget imgL() {
   return Image.asset(
     "assets/images/hbl.png",

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taller_001/main.dart';
+import 'package:taller_001/screens/screen3.dart';
+import 'package:taller_001/screens/screen4.dart';
 import 'package:taller_001/screens/screen5.dart';
 import 'package:taller_001/screens/screen6.dart';
 
@@ -14,7 +16,7 @@ class MiDrawer extends StatelessWidget {
           ListTile(
             title: Text("Inicio"),
             onTap: () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Taller())),
+                context, MaterialPageRoute(builder: (context) => Screen4())),
           ),
           ListTile(
             title: Text("Series"),

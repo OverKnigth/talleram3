@@ -18,18 +18,15 @@ class Screen4 extends StatelessWidget {
       drawer: MiDrawer(),
       body: Stack(
         children: [
-          // Fondo
           Positioned.fill(
             child: Image.network(
               "https://img.freepik.com/foto-gratis/fondo-liso-plano-varios-colores_599236-109.jpg",
               fit: BoxFit.cover,
             ),
           ),
-          // Contenido principal
           SingleChildScrollView(
             child: Column(
               children: [
-                // Carrusel de imágenes
                 Container(
                   height: 200,
                   child: PageView(
@@ -49,7 +46,6 @@ class Screen4 extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Título de las mejores series
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
@@ -62,20 +58,19 @@ class Screen4 extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // Tarjetas de series
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: GridView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // 2 columnas
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
                       crossAxisSpacing: 16,
                       mainAxisSpacing: 16,
-                      childAspectRatio: 0.75, // Relación entre el ancho y alto de cada tarjeta
+                      childAspectRatio: 0.75,
                     ),
                     children: [
-                      // Tarjeta 1
                       Card(
                         elevation: 8,
                         shape: RoundedRectangleBorder(
@@ -115,7 +110,6 @@ class Screen4 extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // Tarjeta 2
                       Card(
                         elevation: 8,
                         shape: RoundedRectangleBorder(
@@ -155,7 +149,6 @@ class Screen4 extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // Tarjeta 3
                       Card(
                         elevation: 8,
                         shape: RoundedRectangleBorder(
@@ -195,7 +188,6 @@ class Screen4 extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // Tarjeta 4
                       Card(
                         elevation: 8,
                         shape: RoundedRectangleBorder(
@@ -235,7 +227,6 @@ class Screen4 extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // Tarjeta 5
                       Card(
                         elevation: 8,
                         shape: RoundedRectangleBorder(
@@ -275,7 +266,6 @@ class Screen4 extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // Tarjeta 6
                       Card(
                         elevation: 8,
                         shape: RoundedRectangleBorder(

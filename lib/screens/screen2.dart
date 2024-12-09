@@ -30,8 +30,7 @@ class _Screen2State extends State<Screen2> {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color.fromRGBO(10, 12, 164, 2),
-        iconTheme: const IconThemeData(
-            color: Colors.white), // Flecha de regreso en blanco
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Stack(
         children: [
@@ -42,7 +41,7 @@ class _Screen2State extends State<Screen2> {
               fit: BoxFit.cover,
             ),
           ),
-          // Contenido centrado
+
           Center(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -68,9 +67,9 @@ class _Screen2State extends State<Screen2> {
                         padding: const EdgeInsets.all(20.0),
                         child: Text(
                             "Ingresa tu correo electrónico y contraseña de tu cuenta de MAX o HBO MAX.",
-                            style: TextStyle(color: Colors.white, fontSize: 18), textAlign: TextAlign.center),
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            textAlign: TextAlign.center),
                       ),
-                      // Campo para el correo
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
@@ -92,7 +91,6 @@ class _Screen2State extends State<Screen2> {
                         },
                       ),
                       const SizedBox(height: 20),
-                      // Campo para la contraseña
                       TextFormField(
                         controller: _passwordController,
                         obscureText: true,
@@ -115,7 +113,6 @@ class _Screen2State extends State<Screen2> {
                         },
                       ),
                       const SizedBox(height: 30),
-                      // Botón de inicio de sesión
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
@@ -136,7 +133,6 @@ class _Screen2State extends State<Screen2> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      // Botón para registrarse
                       TextButton(
                         onPressed: () => registro(context),
                         child: const Text(
