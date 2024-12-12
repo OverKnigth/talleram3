@@ -12,7 +12,9 @@ class Screen4 extends StatelessWidget {
           "Inicio",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: const Color.fromRGBO(10, 12, 164, 2),
+        backgroundColor: const Color.fromRGBO(10, 12, 164, 2)
+        
+        ,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: MiDrawer(),

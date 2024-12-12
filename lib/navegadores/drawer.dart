@@ -19,7 +19,7 @@ class MiDrawer extends StatelessWidget {
                 context, MaterialPageRoute(builder: (context) => Screen4())),
           ),
           ListTile(
-            title: Text("Series"),
+            title: Text("Rick and Morty"),
             onTap: () => Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Screen5())),
           ),

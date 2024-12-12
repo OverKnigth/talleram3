@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:taller_001/screens/screen3.dart';
 import 'package:taller_001/screens/screen4.dart';
@@ -116,7 +118,9 @@ class _Screen2State extends State<Screen2> {
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            login(context);
+                            print('Botón presionado');
+                            Ingresar(_emailController.text,
+                                _passwordController.text, context);
                           }
                         },
                         style: ElevatedButton.styleFrom(
@@ -154,14 +158,50 @@ class _Screen2State extends State<Screen2> {
       ),
     );
   }
+
+  void registro(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Screen3()));
+  }
+
+Future<void> Ingresar(email, password, context) async {
+  print('Ingresar llamada con email: $email y password: $password');
+  try {
+    final credential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+    print('Autenticación exitosa');
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Screen4()));
+  } on FirebaseAuthException catch (e) {
+    print('Error de autenticación: $e');
+
+    // Mostrar alerta con el mensaje de error
+    String errorMessage = '';
+    if (e.code == 'user-not-found') {
+      errorMessage = 'Usuario no encontrado. Verifica tu correo electrónico.';
+    } else if (e.code == 'wrong-password') {
+      errorMessage = 'Contraseña incorrecta. Inténtalo nuevamente.';
+    } else {
+      errorMessage = 'Ocurrió un error. Por favor, inténtalo de nuevo.';
+    }
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Error de Autenticación'),
+          content: Text(errorMessage),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Aceptar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
-void registro(BuildContext context) {
-  Navigator.push(
-      context, MaterialPageRoute(builder: (context) => const Screen3()));
-}
-
-void login(BuildContext context) {
-  Navigator.push(
-      context, MaterialPageRoute(builder: (context) => const Screen4()));
 }

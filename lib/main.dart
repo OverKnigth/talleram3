@@ -1,11 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:taller_001/screens/screen2.dart';
 import 'package:taller_001/screens/screen3.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const Taller());
 }
-
 class Taller extends StatelessWidget {
   const Taller({super.key});
 

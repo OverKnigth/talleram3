@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:taller_001/screens/screen2.dart';
+
 
 class Screen3 extends StatefulWidget {
   const Screen3({super.key});
@@ -14,6 +16,33 @@ class _Screen3State extends State<Screen3> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
+
+  Future<void> _registrar(String email, String password, BuildContext context) async {
+    try {
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+
+      // Redirige al usuario a la pantalla de información después de un registro exitoso.
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Screen2()),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('La contraseña es demasiado débil.')),
+        );
+      } else if (e.code == 'email-already-in-use') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('El correo ya está en uso.')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,26 +71,22 @@ class _Screen3State extends State<Screen3> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(0.0),
-                      child: Text(
-                        "Crea tu cuenta",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
+                    const Text(
+                      "Crea tu cuenta",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Text(
-                        "Disfruta de lo mejor de HBO MAX en cada momento, llena los datos y unete a nuestra gran familia.",
-                        style: TextStyle(color: Colors.white, fontSize: 15),
-                        textAlign: TextAlign.center,
-                      ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Disfruta de lo mejor de HBO MAX en cada momento, llena los datos y únete a nuestra gran familia.",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                      textAlign: TextAlign.center,
                     ),
+                    const SizedBox(height: 20),
                     TextFormField(
                       controller: _emailController,
                       decoration: InputDecoration(
@@ -133,10 +158,11 @@ class _Screen3State extends State<Screen3> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Registro exitoso')),
+                          _registrar(
+                            _emailController.text.trim(),
+                            _passwordController.text.trim(),
+                            context,
                           );
-                          inicio(context);
                         }
                       },
                       style: ElevatedButton.styleFrom(
