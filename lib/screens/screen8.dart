@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-class Screen5 extends StatelessWidget {
-  const Screen5({Key? key}) : super(key: key);
+class Screen8 extends StatelessWidget {
+  const Screen8({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Dandadan",
+          "Rick and Morty",
           style: TextStyle(
             color: Colors.white, 
             fontWeight: FontWeight.bold,
@@ -30,9 +30,9 @@ class GoogleDriveVideoPlayer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const String googleDrivePreviewUrl =
-        "https://mega.nz/file/JDdECTrT#At8saQcw90HhfgNSbw-uzhTH2Klyq8sl_KJxGnaMLt4";
+        "https://www.dropbox.com/scl/fi/3nq63ra4iuqhq67fp681t/1.01-Buscando-las-semillas-1.mp4?rlkey=hpqlnouhl7xcjynooldwfkfla&st=q7zes7iq&raw=1";
 
-
+    // Convierte la URL a un objeto WebUri
     final webUri = WebUri(googleDrivePreviewUrl);
 
     return Column(
@@ -42,7 +42,7 @@ class GoogleDriveVideoPlayer extends StatelessWidget {
             margin: const EdgeInsets.all(8.0),
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 255, 255, 255), 
+              color: const Color.fromRGBO(10, 12, 164, 0.1), 
               borderRadius: BorderRadius.circular(8.0),
               border: Border.all(
                 color: const Color.fromRGBO(10, 12, 164, 2),

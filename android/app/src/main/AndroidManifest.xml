@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:label="taller_001"
+        android:label="HBO MAX-D"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

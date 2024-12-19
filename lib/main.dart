@@ -6,11 +6,12 @@ import 'package:taller_001/screens/screen3.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-await Firebase.initializeApp(
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const Taller());
 }
+
 class Taller extends StatelessWidget {
   const Taller({super.key});
 
@@ -58,14 +59,29 @@ class _CuerpoState extends State<Cuerpo> with SingleTickerProviderStateMixin {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  "HBO MAX",
-                  style: TextStyle(
-                    fontSize: 50,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                // Logo de HBO Max
+                AnimatedOpacity(
+                  opacity: _isVisible ? 1.0 : 0.0,
+                  duration: const Duration(seconds: 2),
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.7),
+                          blurRadius: 15,
+                          offset: Offset(0, 5), 
+                        ),
+                      ],
+                    ),
+                    child: Image.network(
+                      "https://i.pinimg.com/originals/8a/62/38/8a6238114ada8cb2339798fa7689fb86.png",
+                      width: 300, 
+                      height: 120, 
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
                 const Padding(
@@ -92,12 +108,6 @@ class _CuerpoState extends State<Cuerpo> with SingleTickerProviderStateMixin {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-                const SizedBox(height: 20),
-                AnimatedOpacity(
-                  opacity: _isVisible ? 1.0 : 0.0,
-                  duration: const Duration(seconds: 2),
-                  child: imgL(),
                 ),
                 const SizedBox(height: 20),
                 login_btn(context),
@@ -152,12 +162,4 @@ void navegar2(BuildContext context) {
 void navegar3(BuildContext context) {
   Navigator.push(
       context, MaterialPageRoute(builder: (context) => const Screen3()));
-}
-
-Widget imgL() {
-  return Image.asset(
-    "assets/images/hbl.png",
-    width: 300,
-    height: 300,
-  );
 }
